@@ -8,22 +8,22 @@ import java.awt.image.*;
 import java.awt.Image;
 
 public class Main{
-    public static final String outPath = "images/";
-    public static final String imageFormat = "png";
-    public static final int captchaLength = 4;
-    public static final int numImages = 10;
+    public static final String OUT_PATH = "images/";
+    public static final String IMAGE_FORMAT = "png";
+    public static final int CAPTCHA_LENGTH = 4;
+    public static final int NUM_IMAGES = 20000;
     public static final int IMAGE_WIDTH = 150;
     public static final int IMAGE_HEIGHT = 60;
     
 
     public static void main(String[] args) throws IOException {
         int i = 0;
-        while(i++ < numImages){
+        while(i++ < NUM_IMAGES){
             Cage cage = getRandomCage();
 
-            String text = getAlphaNumericString(captchaLength);
+            String text = getAlphaNumericString(CAPTCHA_LENGTH);
             long serialization = nanoTime();
-            String file = outPath + text + "_"+ serialization + "." + imageFormat;
+            String file = OUT_PATH + text + "_"+ serialization + "." + IMAGE_FORMAT;
             OutputStream os = new FileOutputStream(file, false);
             try {
                 cage.draw(text, os);
@@ -71,7 +71,7 @@ public class Main{
         File inputFile = new File(inputImagePath);
         BufferedImage inputImage = ImageIO.read(inputFile);
         BufferedImage outputImage = _resizeImage(inputImage, targetWidth, targetHeight);
-        ImageIO.write(outputImage, imageFormat, new File(inputImagePath));
+        ImageIO.write(outputImage, IMAGE_FORMAT, new File(inputImagePath));
         return outputImage;
     }
 
