@@ -113,10 +113,13 @@ venv3.6/
 # 数据文件
 sample/
 model/
+cage/images/
 labels.json
 test.csv
 loss_test.csv
 loss_train.csv
 
+# JAVA
+*.class
 
 logs/

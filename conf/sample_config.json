@@ -7,7 +7,7 @@
   "online_image_dir": "sample/online/",
   "local_image_dir": "sample/local/",
   "model_save_dir": "model/",
-  "image_width": 100,
+  "image_width": 150,
   "image_height": 60,
   "max_captcha": 4,
   "image_suffix": "png",
