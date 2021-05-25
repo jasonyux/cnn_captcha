@@ -3,11 +3,17 @@ import java.io.*;
 import java.util.*;
 import java.lang.Math;
 import static java.lang.System.nanoTime;
+import javax.imageio.*;
+import java.awt.image.*;
+import java.awt.Image;
 
 public class Main{
     public static final String outPath = "images/";
+    public static final String imageFormat = "png";
     public static final int captchaLength = 4;
-    public static final int numImages = 20000;
+    public static final int numImages = 10;
+    public static final int IMAGE_WIDTH = 150;
+    public static final int IMAGE_HEIGHT = 60;
     
 
     public static void main(String[] args) throws IOException {
@@ -17,12 +23,17 @@ public class Main{
 
             String text = getAlphaNumericString(captchaLength);
             long serialization = nanoTime();
-            String file = outPath + text + "_"+ serialization + ".png";
+            String file = outPath + text + "_"+ serialization + "." + imageFormat;
             OutputStream os = new FileOutputStream(file, false);
             try {
                 cage.draw(text, os);
             } finally {
                 os.close();
+            }
+            try {
+                resizeImage(file, IMAGE_WIDTH, IMAGE_HEIGHT);
+            } catch(Exception e) {
+                System.out.println("resize "+ file +"failed");
             }
         }
     }
@@ -54,5 +65,20 @@ public class Main{
         }
   
         return sb.toString();
+    }
+
+    public static BufferedImage resizeImage(String inputImagePath, int targetWidth, int targetHeight) throws IOException {
+        File inputFile = new File(inputImagePath);
+        BufferedImage inputImage = ImageIO.read(inputFile);
+        BufferedImage outputImage = _resizeImage(inputImage, targetWidth, targetHeight);
+        ImageIO.write(outputImage, imageFormat, new File(inputImagePath));
+        return outputImage;
+    }
+
+    private static BufferedImage _resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) throws IOException {
+        Image resultingImage = originalImage.getScaledInstance(targetWidth, targetHeight, Image.SCALE_DEFAULT);
+        BufferedImage outputImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
+        outputImage.getGraphics().drawImage(resultingImage, 0, 0, null);
+        return outputImage;
     }
 }
