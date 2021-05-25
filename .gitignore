@@ -89,6 +89,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+venv3.6/
 
 # Spyder project settings
 .spyderproject
@@ -105,6 +106,9 @@ venv.bak/
 
 # pycharm
 .idea/
+
+# vscode
+.vscode/
 
 # 数据文件
 sample/

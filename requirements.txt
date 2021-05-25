@@ -16,7 +16,6 @@ itsdangerous==1.1.0
 Jinja2==2.10.1
 Markdown==3.1
 MarkupSafe==1.1.1
-matplotlib==2.1.0
 numpy==1.16.2
 olefile==0.46
 Pillow==4.3.0
@@ -27,7 +26,8 @@ pytz==2018.9
 requests==2.19.1
 six==1.12.0
 tensorboard==1.7.0
-tensorflow==1.7.0
 termcolor==1.1.0
 urllib3==1.23
 Werkzeug==0.15.2
+# matplotlib==2.1.0, https://pypi.org/project/matplotlib/2.1.0/#files
+# tensorflow==1.7.0, https://pypi.org/project/tensorflow/1.7.0/#files
