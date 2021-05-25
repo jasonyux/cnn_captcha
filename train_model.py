@@ -97,6 +97,8 @@ class TrainModel(CNN):
             n = n % max_batch
         s = n * size
         e = (n + 1) * size
+        
+        random.shuffle(self.train_images_list) # shuffle again
         this_batch = self.train_images_list[s:e]
         # print("{}:{}".format(s, e))
 

@@ -50,7 +50,8 @@ public class Main{
     {
         // chose a Character random from this String
         String AlphaNumericString = "0123456789"
-                                    + "abcdefghijklmnopqrstuvxyz";
+                                    + "abcdefghijklmnopqrstuvxyz"
+                                    + "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   
         // create StringBuffer size of AlphaNumericString
         StringBuilder sb = new StringBuilder(n);

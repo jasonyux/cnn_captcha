@@ -113,6 +113,7 @@ venv3.6/
 # 数据文件
 sample/
 model/
+prev_model/
 cage/images/
 labels.json
 test.csv
@@ -123,3 +124,4 @@ loss_train.csv
 *.class
 
 logs/
+log.txt

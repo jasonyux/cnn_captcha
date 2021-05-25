@@ -59,6 +59,7 @@ def up_image():
     if request.method == 'POST' and request.files.get('image_file'):
         timec = str(time.time()).replace(".", "")
         file = request.files.get('image_file')
+        print(file)
         img = file.read()
         img = BytesIO(img)
         img = Image.open(img, mode="r")
@@ -73,12 +74,12 @@ def up_image():
         file_name = "{}_{}.{}".format(value, timec, image_suffix)
         file_path = os.path.join(api_image_dir + file_name)
         img.save(file_path)
+        img.close()
         result = {
             'time': timec,   # 时间戳
             'value': value,  # 预测的结果
             'speed_time(ms)': int((e - s) * 1000)  # 识别耗费的时间
         }
-        img.close()
         return jsonify(result)
     else:
         content = json.dumps({"error_code": "1001"})
